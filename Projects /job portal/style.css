@@ -46,7 +46,7 @@ hr {
 }
 
 /* =========================================
-   2. HEADER & TYPOGRAPHY 
+   2. HEADER & TYPOGRAPHY (OK) 
    
    ========================================= */
 header {
@@ -81,6 +81,7 @@ header img:hover {
     transform: scale(1.05);
     border-color: var(--accent);
 }
+
 
 h2 {
     font-size: 1.8rem;
