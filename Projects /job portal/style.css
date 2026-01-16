@@ -36,7 +36,8 @@ body > * {
     max-width: 800px;
 }
 
-/* Hide the default HTML horizontal rules, we use margins instead */
+
+
 hr {
     border: 0;
     height: 1px;
