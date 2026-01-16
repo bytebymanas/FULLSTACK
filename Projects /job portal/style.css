@@ -1,0 +1,279 @@
+/* =========================================
+   1. GLOBAL VARIABLES & RESET
+   ========================================= */
+   :root {
+    --bg-color: #0f172a;        /* Deep Slate */
+    --card-bg: #1e293b;         /* Lighter Slate */
+    --text-main: #f1f5f9;       /* Off-white */
+    --text-muted: #94a3b8;      /* Grey for secondary text */
+    --accent: #38bdf8;          /* Sky Blue */
+    --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+/* Limit content width for readability */
+body > * {
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Hide the default HTML horizontal rules, we use margins instead */
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--card-bg), transparent);
+    margin: 3rem 0;
+}
+
+/* =========================================
+   2. HEADER & TYPOGRAPHY
+   ========================================= */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-in;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+header img {
+    margin-top: 2rem;
+    border: 4px solid var(--card-bg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: var(--transition);
+}
+
+header img:hover {
+    transform: scale(1.05);
+    border-color: var(--accent);
+}
+
+h2 {
+    font-size: 1.8rem;
+    border-left: 5px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+h3 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+/* =========================================
+   3. NAVIGATION
+   ========================================= */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 1.1rem;
+    margin: 2rem 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* Hide the pipes "|" in the text node by making text transparent, 
+   then resetting link visibility. (Optional modern trick) 
+   For simplicity here, we keep them but dim them. */
+nav {
+    color: var(--card-bg); /* Hides the pipes slightly */
+}
+
+/* =========================================
+   4. SECTIONS & CARDS (Projects)
+   ========================================= */
+section {
+    margin-bottom: 2rem;
+}
+
+article {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+/* =========================================
+   5. SKILLS LIST
+   ========================================= */
+ul {
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+}
+
+li {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+}
+
+li strong {
+    color: #fff;
+    margin-right: 0.5rem;
+}
+
+/* =========================================
+   6. EDUCATION TABLE
+   ========================================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Clips corners */
+    border: none;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+th {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================================
+   7. CONTACT FORM
+   ========================================= */
+form {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--bg-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: white;
+    font-family: var(--font-main);
+    font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+button {
+    background: var(--accent-gradient);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: var(--transition);
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 2rem;
+}
+
+/* =========================================
+   9. MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 600px) {
+    h1 { font-size: 2.2rem; }
+    
+    /* Make table scrollable on small screens */
+    table { display: block; overflow-x: auto; }
+    
+    nav { flex-wrap: wrap; gap: 1rem; }
+}
+
+/* Simple fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
