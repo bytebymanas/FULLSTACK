@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>NaukriClone</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaukriClone - Interactive</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+</head> 
 <body>
 
     <div class="navbar">
@@ -22,9 +24,9 @@
         <p>Search over 500,000 jobs</p>
         
         <div class="search-box">
-            <input type="text" placeholder="Enter skills (e.g. Java)">
-            <input type="text" placeholder="Enter location">
-            <button>Search</button>
+            <input type="text" id="skillInput" placeholder="Enter skills (e.g. Java)">
+            <input type="text" id="locationInput" placeholder="Enter location">
+            <button id="searchBtn">Search</button>
         </div>
     </div>
 
@@ -35,9 +37,9 @@
             <br>
             <div class="filter-group">
                 <label>Location</label><br>
-                <input type="checkbox"> Delhi / NCR <br>
-                <input type="checkbox"> Bangalore <br>
-                <input type="checkbox"> Mumbai <br>
+                <input type="checkbox" class="loc-filter" value="Delhi"> Delhi / NCR <br>
+                <input type="checkbox" class="loc-filter" value="Bangalore"> Bangalore <br>
+                <input type="checkbox" class="loc-filter" value="Mumbai"> Mumbai <br>
             </div>
             <br>
             <div class="filter-group">
@@ -48,47 +50,15 @@
         </div>
 
         <div class="job-list">
-            <h2>Recent Job Openings</h2>
-
-            <div class="job-card">
-                <h3>Web Developer <span style="font-size: 12px; color: red;">(Hot)</span></h3>
-                <p class="company">Tech Solutions Pvt Ltd</p>
-                <p class="details">
-                    <span>Experience: 0-2 Yrs</span> | 
-                    <span>Location: Pune</span>
-                </p>
-                <p class="desc">Looking for a basic HTML/CSS developer. Good knowledge of Javascript is a plus.</p>
-                <button class="apply-btn">Apply Now</button>
-            </div>
-
-            <div class="job-card">
-                <h3>Sales Executive</h3>
-                <p class="company">Market Masters</p>
-                <p class="details">
-                    <span>Experience: 1-3 Yrs</span> | 
-                    <span>Location: Delhi</span>
-                </p>
-                <p class="desc">Field sales requirement. Must have good communication skills.</p>
-                <button class="apply-btn">Apply Now</button>
-            </div>
-
-            <div class="job-card">
-                <h3>Data Entry Operator</h3>
-                <p class="company">Global Services</p>
-                <p class="details">
-                    <span>Experience: Fresher</span> | 
-                    <span>Location: Remote</span>
-                </p>
-                <p class="desc">Urgent hiring for data entry. Typing speed should be 30 wpm.</p>
-                <button class="apply-btn">Apply Now</button>
-            </div>
-
+            <h2 id="resultTitle">Recent Job Openings</h2>
+            <div id="jobContainer"></div>
         </div>
     </div>
 
     <div class="footer">
-        <p>Copyright 2025 - NaukriClone</p>
+        <p>Copyright 2026 - NaukriClone</p>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
