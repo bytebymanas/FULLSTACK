@@ -1,112 +1,119 @@
-// 1. Mock Data: Array of Job Objects
-const jobs = [
-    {
-        id: 1,
-        title: "Web Developer",
-        company: "Tech Solutions Pvt Ltd",
-        exp: "0-2 Yrs",
-        location: "Pune",
-        desc: "Looking for a basic HTML/CSS developer. Good knowledge of Javascript is a plus.",
-        isHot: true
-    },
-    {
-        id: 2,
-        title: "Sales Executive",
-        company: "Market Masters",
-        exp: "1-3 Yrs",
-        location: "Delhi",
-        desc: "Field sales requirement. Must have good communication skills.",
-        isHot: false
-    },
-    {
-        id: 3,
-        title: "Data Entry Operator",
-        company: "Global Services",
-        exp: "Fresher",
-        location: "Remote",
-        desc: "Urgent hiring for data entry. Typing speed should be 30 wpm.",
-        isHot: false
-    },
-    {
-        id: 4,
-        title: "Frontend Engineer",
-        company: "Innovate Web",
-        exp: "2-5 Yrs",
-        location: "Bangalore",
-        desc: "React.js expert needed for a fast-paced startup environment.",
-        isHot: true
-    },
-    {
-        id: 5,
-        title: "Marketing Manager",
-        company: "Growth Hackers",
-        exp: "4-7 Yrs",
-        location: "Mumbai",
-        desc: "Lead the digital marketing team for global brand campaigns.",
-        isHot: false
-    }
+// 1. Initialize Data (Load from LocalStorage or use defaults)
+let jobs = JSON.parse(localStorage.getItem('naukriJobs')) || [
+    { id: 1, title: "Web Developer", company: "Tech Solutions", exp: "0-2 Yrs", location: "Pune", desc: "HTML/CSS expert needed." },
+    { id: 2, title: "Sales Executive", company: "Market Masters", exp: "1-3 Yrs", location: "Delhi", desc: "Field sales role." }
 ];
 
-// 2. DOM Elements
-const jobContainer = document.getElementById('jobContainer');
-const skillInput = document.getElementById('skillInput');
-const locationInput = document.getElementById('locationInput');
-const searchBtn = document.getElementById('searchBtn');
-const resultTitle = document.getElementById('resultTitle');
+// 2. Navigation Logic
+function showSection(section) {
+    document.getElementById('searchView').style.display = section === 'search' ? 'block' : 'none';
+    document.getElementById('adminView').style.display = section === 'admin' ? 'block' : 'none';
+    if(section === 'admin') renderAdminTable();
+    else renderJobs(jobs);
+}
 
-// 3. Function to Render Jobs
-function displayJobs(filteredJobs) {
-    jobContainer.innerHTML = ""; // Clear current list
-
-    if (filteredJobs.length === 0) {
-        jobContainer.innerHTML = `<div class="no-results"><h3>No jobs found matching your criteria.</h3></div>`;
-        return;
-    }
-
-    filteredJobs.forEach(job => {
-        const jobCard = document.createElement('div');
-        jobCard.className = 'job-card';
-        
-        jobCard.innerHTML = `
-            <h3>${job.title} ${job.isHot ? '<span style="font-size: 12px; color: red;">(Hot)</span>' : ''}</h3>
+// 3. Render Jobs for Users
+function renderJobs(data) {
+    const container = document.getElementById('jobContainer');
+    container.innerHTML = data.map(job => `
+        <div class="job-card">
+            <h3>${job.title}</h3>
             <p class="company">${job.company}</p>
-            <p class="details">
-                <span>Experience: ${job.exp}</span> | 
-                <span>Location: ${job.location}</span>
-            </p>
+            <p class="details">Exp: ${job.exp} | Loc: ${job.location}</p>
             <p class="desc">${job.desc}</p>
             <button class="apply-btn">Apply Now</button>
-        `;
-        jobContainer.appendChild(jobCard);
-    });
+        </div>
+    `).join('') || '<p>No jobs found.</p>';
 }
 
-// 4. Search Logic
-function handleSearch() {
-    const skillValue = skillInput.value.toLowerCase();
-    const locationValue = locationInput.value.toLowerCase();
-
-    const filtered = jobs.filter(job => {
-        const matchesSkill = job.title.toLowerCase().includes(skillValue) || 
-                             job.desc.toLowerCase().includes(skillValue);
-        const matchesLocation = job.location.toLowerCase().includes(locationValue);
-        
-        return matchesSkill && matchesLocation;
-    });
-
-    resultTitle.innerText = `Search Results (${filtered.length})`;
-    displayJobs(filtered);
+// 4. Admin Table CRUD
+function renderAdminTable() {
+    const tableBody = document.getElementById('adminTableBody');
+    tableBody.innerHTML = jobs.map(job => `
+        <tr>
+            <td>${job.title}</td>
+            <td>${job.company}</td>
+            <td>${job.location}</td>
+            <td>
+                <button class="edit-btn" onclick="openModal(${job.id})">Edit</button>
+                <button class="delete-btn" onclick="deleteJob(${job.id})">Delete</button>
+            </td>
+        </tr>
+    `).join('');
 }
 
-// 5. Event Listeners
-searchBtn.addEventListener('click', handleSearch);
+// 5. Save/Update Job
+function saveJob() {
+    const id = document.getElementById('jobId').value;
+    const newJob = {
+        id: id ? parseInt(id) : Date.now(),
+        title: document.getElementById('formTitle').value,
+        company: document.getElementById('formCompany').value,
+        location: document.getElementById('formLocation').value,
+        exp: document.getElementById('formExp').value,
+        desc: document.getElementById('formDesc').value
+    };
 
-// Allow pressing "Enter" key to search
-[skillInput, locationInput].forEach(input => {
-    input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleSearch();
-    });
+    if(id) {
+        // Update
+        const index = jobs.findIndex(j => j.id == id);
+        jobs[index] = newJob;
+    } else {
+        // Create
+        jobs.push(newJob);
+    }
+
+    localStorage.setItem('naukriJobs', JSON.stringify(jobs));
+    closeModal();
+    renderAdminTable();
+}
+
+// 6. Delete Job
+function deleteJob(id) {
+    if(confirm("Are you sure you want to delete this job?")) {
+        jobs = jobs.filter(job => job.id !== id);
+        localStorage.setItem('naukriJobs', JSON.stringify(jobs));
+        renderAdminTable();
+    }
+}
+
+// 7. Modal Logic
+function openModal(id = null) {
+    const modal = document.getElementById('jobModal');
+    const title = document.getElementById('modalTitle');
+    modal.style.display = "block";
+
+    if(id) {
+        title.innerText = "Edit Job";
+        const job = jobs.find(j => j.id === id);
+        document.getElementById('jobId').value = job.id;
+        document.getElementById('formTitle').value = job.title;
+        document.getElementById('formCompany').value = job.company;
+        document.getElementById('formLocation').value = job.location;
+        document.getElementById('formExp').value = job.exp;
+        document.getElementById('formDesc').value = job.desc;
+    } else {
+        title.innerText = "Post New Job";
+        document.getElementById('jobId').value = "";
+        document.querySelectorAll('.modal-content input, textarea').forEach(i => i.value = "");
+    }
+}
+
+function closeModal() {
+    document.getElementById('jobModal').style.display = "none";
+}
+
+// 8. Search Logic
+document.getElementById('searchBtn').addEventListener('click', () => {
+    const skill = document.getElementById('skillInput').value.toLowerCase();
+    const loc = document.getElementById('locationInput').value.toLowerCase();
+    
+    const filtered = jobs.filter(j => 
+        (j.title.toLowerCase().includes(skill) || j.desc.toLowerCase().includes(skill)) &&
+        j.location.toLowerCase().includes(loc)
+    );
+    renderJobs(filtered);
 });
 
 // Initial Load
-displayJobs(jobs);
+renderJobs(jobs);

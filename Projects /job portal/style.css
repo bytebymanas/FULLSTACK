@@ -1,323 +1,213 @@
 body {
     margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f7f9;
 }
 
 .navbar {
-    background-color: #ffffff;
-    height: 65px;
-    padding: 15px 50px 0px 50px; 
-    border-bottom: 1px solid #ddd;
+    background: #fff;
+    padding: 15px 50px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
 }
 
 .logo {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
     color: #2e55fa;
-    margin-top: -5px; 
+    cursor: pointer;
 }
 
 .menu a {
     text-decoration: none;
-    color: #333;
+    color: #444;
     margin-left: 20px;
-    font-size: 14px;
-    position: relative;
-    top: -5px; 
-}
-
-.login-btn {
-    font-weight: bold;
-}
-
-.register-btn {
-    background-color: #ff7555;
-    color: white !important;
-    padding: 8px 15px;
-    border-radius: 5px;
+    font-size: 15px;
 }
 
 .search-section {
-    background-color: #333; 
+    background: #1e293b;
     color: white;
     text-align: center;
-    padding: 60px 20px;
-}
-
-.search-section h1 {
-    margin-top: 0;
+    padding: 50px 20px;
 }
 
 .search-box {
-    background-color: #ddd; 
-    display: inline-block;
-    padding: 15px;
-    border-radius: 0px; 
-    margin-top: 20px;
-}
-
-.search-box input {
-    padding: 10px;
-    width: 220px;
-    height: 20px; 
-    border: 1px solid #999;
-    margin-right: 5px;
-}
-
-.search-box button {
-    padding: 12px 25px;
-    background-color: #2e55fa;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 20px; 
-    vertical-align: bottom; 
-}
-
-.container {
-    width: 85%;
-    margin: 30px auto;
-    display: flex;
-}
-
-.sidebar {
-    width: 22%;
-    background-color: white;
-    padding: 20px;
-    height: 300px; 
-    border: 1px solid #ddd;
-    margin-top: 20px; 
-}
-
-.filter-group {
-    margin-bottom: 20px;
-}
-
-.filter-group label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.job-list {
-    width: 72%;
-    margin-left: 3%;
-}
-
-.job-card {
-    background-color: white;
-    padding: 20px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 5px #eee;
-}
-
-.job-card h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.company {
-    color: #666;
-    font-size: 14px;
-    margin-top: 0;
-}
-a
-.details {body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-}
-
-.navbar {
-    background-color: #ffffff;
-    height: 65px;
-    padding: 15px 50px 0px 50px; 
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-}
-
-.logo {
-    font-size: 26px;
-    font-weight: bold;
-    color: #2e55fa;
-}
-
-.menu a {
-    text-decoration: none;
-    color: #333;
-    margin-left: 20px;
-    font-size: 14px;
-}
-
-.login-btn {
-    font-weight: bold;
-}
-
-.register-btn {
-    background-color: #ff7555;
-    color: white !important;
-    padding: 8px 15px;
-    border-radius: 5px;
-}
-
-.search-section {
-    background-color: #333; 
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.search-section h1 {
-    margin-top: 0;
-}
-
-.search-box {
-    background-color: #ddd; 
-    display: inline-block;
-    padding: 15px;
-    border-radius: 4px; 
-    margin-top: 20px;
-}
-
-.search-box input {
-    padding: 10px;
-    width: 220px;
-    height: 40px; 
-    border: 1px solid #999;
-    margin-right: 5px;
-    box-sizing: border-box;
-}
-
-.search-box button {
-    padding: 0 25px;
-    height: 40px;
-    background-color: #2e55fa;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 20px; 
-    vertical-align: top; 
-}
-
-.container {
-    width: 85%;
-    margin: 30px auto;
-    display: flex;
-}
-
-.sidebar {
-    width: 22%;
-    background-color: white;
-    padding: 20px;
-    min-height: 300px; 
-    border: 1px solid #ddd;
-}
-
-.filter-group {
-    margin-bottom: 20px;
-}
-
-.filter-group label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.job-list {
-    width: 72%;
-    margin-left: 3%;
-}
-
-.job-card {
-    background-color: white;
-    padding: 20px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 5px #eee;
-    transition: transform 0.2s;
-}
-
-.job-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 2px 4px 8px #ddd;
-}
-
-.job-card h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.company {
-    color: #666;
-    font-size: 14px;
-    margin-top: 0;
-}
-
-.details {
-    color: #555;
-    font-size: 13px;
-    margin: 10px 0;
-}
-
-.desc {
-    color: #777;
-    font-size: 14px;
-}
-
-.apply-btn {
-    background-color: #2e55fa;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    margin-top: 15px;
-    border-radius: 4px;
-}
-
-.no-results {
-    text-align: center;
-    padding: 40px;
-    color: #777;
     background: white;
-    border: 1px dashed #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 10px;
 }
 
-.footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
+.search-box input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+.search-box button {
+    background: #2e55fa;
     color: white;
-    margin-top: 50px;
-}
-    color: #555;
-    font-size: 13px;
-    margin: 10px 0;
+    border: none;
+    padding: 0 25px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.desc {
-    color: #777;
-    font-size: 14px;
+.container {
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    gap: 30px;
+}
+
+.sidebar {
+    width: 250px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    height: fit-content;
+}
+
+.job-list {
+    flex-grow: 1;
+}
+
+.job-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    position: relative;
 }
 
 .apply-btn {
-    background-color: #2e55fa;
+    background: #2e55fa;
     color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
-    margin-top: 15px;
+    font-weight: 600;
+}
+
+.admin-panel {
+    width: 100%;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.add-job-btn {
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.admin-table th, 
+.admin-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.edit-btn {
+    background: #f59e0b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.delete-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    width: 450px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.save-btn {
+    background: #2e55fa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #64748b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .footer {

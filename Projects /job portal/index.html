@@ -3,60 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NaukriClone - Interactive</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>NaukriClone Pro - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head> 
 <body>
 
     <div class="navbar">
         <div class="logo">NaukriClone</div>
         <div class="menu">
-            <a href="#">Jobs</a>
-            <a href="#">Recruiters</a>
-            <a href="#">Companies</a>
+            <a href="#" onclick="showSection('search')">Find Jobs</a>
+            <a href="#" onclick="showSection('admin')" class="admin-link">Post/Manage Jobs</a>
             <a href="#" class="login-btn">Login</a>
             <a href="#" class="register-btn">Register</a>
         </div>
     </div>
 
-    <div class="search-section">
-        <h1>Find your dream job</h1>
-        <p>Search over 500,000 jobs</p>
-        
-        <div class="search-box">
-            <input type="text" id="skillInput" placeholder="Enter skills (e.g. Java)">
-            <input type="text" id="locationInput" placeholder="Enter location">
-            <button id="searchBtn">Search</button>
+    <div id="searchView">
+        <div class="search-section">
+            <h1>Find your dream job</h1>
+            <div class="search-box">
+                <input type="text" id="skillInput" placeholder="Skills (e.g. Java)">
+                <input type="text" id="locationInput" placeholder="Location">
+                <button id="searchBtn">Search</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="sidebar">
+                <h3>Filters</h3>
+                <div class="filter-group">
+                    <label>Location</label>
+                    <input type="checkbox" class="loc-filter" value="Remote"> Remote <br>
+                    <input type="checkbox" class="loc-filter" value="Pune"> Pune <br>
+                    <input type="checkbox" class="loc-filter" value="Bangalore"> Bangalore
+                </div>
+            </div>
+
+            <div class="job-list">
+                <h2 id="resultTitle">Job Openings</h2>
+                <div id="jobContainer"></div>
+            </div>
         </div>
     </div>
 
-    <div class="container">
-        
-        <div class="sidebar">
-            <h3>Filters</h3>
-            <br>
-            <div class="filter-group">
-                <label>Location</label><br>
-                <input type="checkbox" class="loc-filter" value="Delhi"> Delhi / NCR <br>
-                <input type="checkbox" class="loc-filter" value="Bangalore"> Bangalore <br>
-                <input type="checkbox" class="loc-filter" value="Mumbai"> Mumbai <br>
-            </div>
-            <br>
-            <div class="filter-group">
-                <label>Salary</label><br>
-                <input type="checkbox"> 0-3 Lakhs <br>
-                <input type="checkbox"> 3-6 Lakhs <br>
-            </div>
+    <div id="adminView" style="display:none;" class="container">
+        <div class="admin-panel">
+            <h2>Manage Job Listings</h2>
+            <button class="add-job-btn" onclick="openModal()">+ Post New Job</button>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="adminTableBody"></tbody>
+            </table>
         </div>
+    </div>
 
-        <div class="job-list">
-            <h2 id="resultTitle">Recent Job Openings</h2>
-            <div id="jobContainer"></div>
+    <div id="jobModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Add New Job</h2>
+            <input type="hidden" id="jobId">
+            <div class="form-group">
+                <label>Job Title</label>
+                <input type="text" id="formTitle" required>
+            </div>
+            <div class="form-group">
+                <label>Company</label>
+                <input type="text" id="formCompany" required>
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" id="formLocation" required>
+            </div>
+            <div class="form-group">
+                <label>Experience</label>
+                <input type="text" id="formExp" placeholder="e.g. 2-5 Yrs">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="formDesc"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button onclick="closeModal()" class="cancel-btn">Cancel</button>
+                <button onclick="saveJob()" class="save-btn">Save Job</button>
+            </div>
         </div>
     </div>
 
     <div class="footer">
-        <p>Copyright 2026 - NaukriClone</p>
+        <p>Copyright 2026 - NaukriClone Pro</p>
     </div>
 
     <script src="script.js"></script>
